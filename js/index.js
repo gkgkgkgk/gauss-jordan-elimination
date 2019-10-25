@@ -4,46 +4,34 @@ const n3 = [[1, 1, 2, -1], [1, 3, -6, 7], [2, -1, 2, 0]];
 const n4 = [[4, -4, -2, 0], [0, 0, 0, 0], [-2, 2, -6, 0]];
 
 const hello = arr => {
-    let arrAug = [...arr];
-    // iterate throug columns
+    let a = [...arr];
     for (let i = 0; i < arr.length; i++) {
-        let untouchedArr = arrAug.slice(i, arrAug.length);
-        untouchedArr.sort((a, b) => { return b[i] - a[i] });
-        let sliced = arrAug.slice(0, i);
-        arrAug = sliced.concat(untouchedArr);
-        // create the leading 1
-        let d = 1;
-        if (arrAug[i][i] !== 1) {
-            d = arrAug[i][i];
-            for (let j = 0; j < arrAug[i].length; j++) {
-                arrAug[i][j] = (d == 0 ? 0 : arrAug[i][j] / d);
+        a = a.slice(0, i).concat(a.slice(i, a.length).sort((a, b) => { return b[i] - a[i] }));
+        if (a[i][i] !== 1) {
+            let d = a[i][i];
+            for (let j = 0; j < a[i].length; j++) {
+                a[i][j] = (d == 0 ? 0 : a[i][j] / d);
             }
         }
-        // make everything under the leading 1 a zero.
-        for (let j = i + 1; j < arrAug.length; j++) {
-            let pZero = arrAug[j][i];
-            let multiple = arrAug[i][i] == 0 ? 0 : (-pZero) / arrAug[i][i];
+        for (let j = i + 1; j < a.length; j++) {
+            let m = a[i][i] == 0 ? 0 : (-a[j][i]) / a[i][i];
             for (let k = 0; k < arr[j].length; k++) {
-                arrAug[j][k] += (multiple * arrAug[i][k]);
-
+                a[j][k] += m * a[i][k];
             }
         }
     }
-    for (let i = arrAug.length - 2; i >= 0; i--) {
-        for (let j = arrAug[i].length - 1; j >= 0; j--) {
-            if (j != arrAug[i].length - 1 && arrAug[i][j] == 1) {
-                break;
-            }
-            if (j != arrAug[i].length - 1) {
-                let pZero = arrAug[i][j];
-                let multiple = arrAug[i][i] == 0 ? 0 : (-pZero) / arrAug[i][i];
+    for (let i = a.length - 2; i >= 0; i--) {
+        for (let j = a[i].length - 1; j >= 0; j--) {
+            if (j != a[i].length - 1 && a[i][j] == 1) break;
+            if (j != a[i].length - 1) {
+                let m = a[i][i] == 0 ? 0 : (-a[i][j]) / a[i][i];
                 for (let k = 0; k < arr[j].length; k++) {
-                    arrAug[i][k] += (multiple * arrAug[j][k]);
+                    a[i][k] += m * a[j][k];
                 }
             }
         }
     }
-    return arrAug;
+    return a;
 }
 
 const r = hello(n2);
