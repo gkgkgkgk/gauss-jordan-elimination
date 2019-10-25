@@ -69,8 +69,9 @@ const hello = arr => {
         }
     }
 
-    console.log(arrAug);
+    return arrAug;
 
 }
 
 const r = hello(n1);
+console.log(r);
