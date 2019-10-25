@@ -2,6 +2,7 @@ const n1 = [[2, 4, 7, 4], [3, 3, 2, 8], [5, 6, 3, 0]];
 const n2 = [[1, 1, 1, 4], [2, -3, 1, 2], [1, 2, -1, -1]];
 const n3 = [[1, 1, 2, -1], [1, 3, -6, 7], [2, -1, 2, 0]];
 const n4 = [[4, -4, -2, 0], [0, 0, 0, 0], [-2, 2, -6, 0]];
+const n5 = [[1, 3, 2, 2], [2, 7, 7, -1], [2, 5, 2, 7]];
 
 const hello = arr => {
     let a = [...arr];
@@ -30,5 +31,5 @@ const hello = arr => {
     return a;
 }
 
-const r = hello(n1);
+const r = hello(n3);
 console.log(r);
