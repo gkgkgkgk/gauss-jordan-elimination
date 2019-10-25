@@ -9,5 +9,7 @@ var r = hello(a);
 function hello (a) {
     return array;
 }
-
 ```
+
+#### First Working Function
+Byte count is sitting at 886 byte. There are still roundoff errors but edge cases seem to be covered.

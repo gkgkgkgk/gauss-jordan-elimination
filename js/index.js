@@ -30,5 +30,5 @@ const hello = arr => {
     return a;
 }
 
-const r = hello(n2);
+const r = hello(n1);
 console.log(r);
